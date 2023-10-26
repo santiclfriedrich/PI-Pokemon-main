@@ -6,9 +6,8 @@ module.exports = (sequelize) => {
   sequelize.define('pokemon', {
     id: {
       type: DataTypes.UUID,
-      allowNull: false,
       primaryKey: true,
-      default: DataTypes.UUIDV4
+      defaultValue: DataTypes.UUIDV4
     },
     name: {
       type: DataTypes.STRING,
@@ -16,9 +15,9 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: false,
+      defaultValue: ''
     },
-    life: {
+    hp: {
       type: DataTypes.STRING,
       allowNull: false,
     },
