@@ -1,6 +1,6 @@
 export const GET_POKEMON = 'GET_POKEMON'
-export const GET_NAME = 'GET_NAME'
-export const GET_ID = 'GET_ID'
+export const GET_BY_NAME = 'GET_BY_NAME'
+export const GET_BY_ID = 'GET_BY_ID'
 export const CREATE_NEW_POKEMON = 'CREATE_NEW_POKEMON'
 export const TYPES = 'TYPES'
 export const FILTER_API_DB = 'FILTER_API_DB'
