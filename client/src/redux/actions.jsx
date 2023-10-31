@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_POKEMON, GET_BY_NAME } from './actions-types'
+import { GET_POKEMON, GET_BY_NAME, GET_BY_ID } from './actions-types'
 
 export const getPoke = () => {
 
@@ -31,4 +31,14 @@ export const getPokeName = (name) => {
         }
     }
 
+}
+
+export const getPokeId = (id) => {
+    return async(dispatch) => {
+        const response = await axios.get(`http://localhost:3001/pokemons/${id}`)
+        dispatch({
+            type: GET_BY_ID,
+            payload: response.data
+        })
+    }
 }
