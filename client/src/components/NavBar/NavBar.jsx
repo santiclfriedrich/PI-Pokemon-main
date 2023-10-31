@@ -25,6 +25,11 @@ const NavBar = () => {
                 && <SearchBar />
             }
 
+            {
+                location.pathname === '/home'
+                && <button onClick={onClickHandler}>Create</button>
+            }
+
         </div>
     )
 

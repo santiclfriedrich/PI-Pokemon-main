@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_POKEMON, GET_BY_NAME, GET_BY_ID } from './actions-types'
+import { GET_POKEMON, GET_BY_NAME, GET_BY_ID, ORDER_NAME_A_TO_Z } from './actions-types'
 
 export const getPoke = () => {
 
@@ -40,5 +40,12 @@ export const getPokeId = (id) => {
             type: GET_BY_ID,
             payload: response.data
         })
+    }
+}
+
+export const orderAz = (order) => {
+    return{
+        type: ORDER_NAME_A_TO_Z,
+        payload: order
     }
 }
