@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import Cards from '../../components/Cards/Cards';
-import { getPoke } from '../../redux/actions';
+import { getPoke, orderAz } from '../../redux/actions';
 
 //paginado
 const POKEMON_PER_PAGE = 10;
@@ -9,10 +9,11 @@ const POKEMON_PER_PAGE = 10;
 const Home = () => {
 
     const allPokemons = useSelector((state) => state?.pokemons )
-    const totalPokemons = allPokemons.length;
+    const dispatch = useDispatch()
+
+    const totalPokemons = allPokemons?.length;
     const totalPage = Math.ceil(totalPokemons / POKEMON_PER_PAGE)
     const [currentPage, setCurrentPage] = useState(0)
-    const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getPoke());
@@ -34,10 +35,19 @@ const Home = () => {
         }
     }
 
+    const orderHandler = (event) => {
+        dispatch(orderAz(event.target.value));
+    }
 
     return(
         <div>
             <h1>Home</h1>
+
+            <select onChange={orderHandler} >
+                <option value="A">A - Z</option>
+                <option value="Z">Z - A</option>
+            </select>
+
             <Cards pokemons={pokeToDisplay} />
 
             <div>

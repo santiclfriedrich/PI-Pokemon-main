@@ -2,15 +2,14 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getPoke, getPokeName } from "../../redux/actions";
 
-const SearchBar = ({setCurrentPage}) => {
+const SearchBar = () => {
 
     const [name, setName] = useState('');
     const dispatch = useDispatch();
 
     const onClickHandler = async () => {
-        const response = await dispatch(getPokeName(name));
+        await dispatch(getPokeName(name));
         setName('');
-        setCurrentPage(0)
     }
 
     const handleName = (e) => {
