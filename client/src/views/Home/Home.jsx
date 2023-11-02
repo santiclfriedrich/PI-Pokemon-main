@@ -52,7 +52,7 @@ const Home = () => {
 
             <div>
                 <button onClick={prevHandler} disabled={currentPage === 0} >Prev</button>
-                <span> Pagina: {currentPage + 1} de {totalPage} </span>
+                <span> página: {currentPage + 1} de {totalPage} </span>
                 <button onClick={nextHandler} disabled={currentPage === totalPage - 1 }>Next</button>
             </div>
 

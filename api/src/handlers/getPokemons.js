@@ -4,7 +4,7 @@ const PokemonsHandler = async (req, res) => {
 
     try {
         const allPokemons = await getPokemons();
-        res.status(200).json(allPokemons)
+        res.status(200).send(allPokemons)
     } catch (error) {
         res.status(404).json({ error: error.message })
     }

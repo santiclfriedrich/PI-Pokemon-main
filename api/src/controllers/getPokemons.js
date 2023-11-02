@@ -17,7 +17,7 @@ const getPokemons = async () => {
             defense: pokemon.defense,
             height: pokemon.height,
             weight: pokemon.weight,
-            types: pokemon.types.map(type => type.name).join(', ')
+            types: pokemon.type.map(type => type.name).join(', ')
         }
     })
 
