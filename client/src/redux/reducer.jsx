@@ -1,10 +1,11 @@
-import { GET_POKEMON, GET_BY_NAME, GET_BY_ID, ORDER_NAME_A_TO_Z, CREATE_NEW_POKEMON, TYPES } from "./actions-types";
+import { GET_POKEMON, GET_BY_NAME, GET_BY_ID, ORDER_ATTACK, ORDER_NAME_A_TO_Z, CREATE_NEW_POKEMON, TYPES, IMAGE } from "./actions-types";
 
 let initialState = {
     newPokemons: [],
     pokemons: [],
     detailsPokemon: [],
-    newTypes: []
+    newTypes: [],
+    allImages: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -43,10 +44,16 @@ const reducer = (state = initialState, action) => {
                 detailsPokemon: action.payload
             }
 
+        case IMAGE:
+            return{
+                ...state,
+                allImages: action.payload
+            }
+
         case ORDER_NAME_A_TO_Z:
             if(action.payload === 'A') {
                 const allPokesCopy = [...state.pokemons]
-                const result = allPokesCopy.sort( (a, b) => a.name.localCompare(b.name) );
+                const result = allPokesCopy.sort( (a, b) => a.name.localeCompare(b.name) );
                 return{
                     ...state,
                     pokemons: [...result]
@@ -54,7 +61,25 @@ const reducer = (state = initialState, action) => {
             }
             if(action.payload === 'Z' ) {
                 const allPokesCopy = [...state.pokemons];
-                const result = allPokesCopy.sort( (a, b) => b.name.localCompare(a.name) )
+                const result = allPokesCopy.sort( (a, b) => b.name.localeCompare(a.name) )
+                return{
+                    ...state,
+                    pokemons: [...result]
+                }
+            }
+
+        case ORDER_ATTACK:
+            if(action.payload === 'ataqueMin') {
+                const allCopy = [...state.pokemons];
+                const result = allCopy.sort((a,b) => a.attack - (b.attack) );
+                return{
+                    ...state,
+                    pokemons: [...result]
+                };
+            }
+            if(action.payload === 'ataqueMax'){
+                const allCopy = [...state.pokemons];
+                const result = allCopy.sort((a, b) => b.attack - (a.attack) );
                 return{
                     ...state,
                     pokemons: [...result]

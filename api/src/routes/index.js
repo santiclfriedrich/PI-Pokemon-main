@@ -6,6 +6,7 @@ const {getPokemonbyIdHandler} = require('../handlers/getId');
 const {getPokemonByNameHandler} = require('../handlers/getName');
 const postPokemon = require('../handlers/postPokemon');
 const getTypeHandler = require('../handlers/getTypes');
+const imageHandler = require('../handlers/imgPokemon')
 
 
 // Configurar los routers
@@ -17,6 +18,7 @@ router.get('/pokemons/:id', getPokemonbyIdHandler);
 router.get('/pokemons', PokemonsHandler);
 router.post('/pokemons', postPokemon);
 router.get('/types', getTypeHandler);
+router.get('/images', imageHandler);
 
 
 

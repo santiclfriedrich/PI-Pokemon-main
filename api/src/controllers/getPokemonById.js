@@ -16,7 +16,7 @@ const getPokemonById = async (id) => {
                 defense: pokemon.defense,
                 height: pokemon.height,
                 weight: pokemon.weight,
-                types: pokemon.types.map(type => type.type.name)
+                types: pokemon.types.map(type => type.name)
             }
         })
         return newPokemon[0]

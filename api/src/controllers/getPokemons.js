@@ -11,13 +11,13 @@ const getPokemons = async () => {
         return {
             id: pokemon.id,
             name: pokemon.name,
-            image: pokemon.image,
+            // image: pokemon.image,
             hp: pokemon.hp,
             attack: pokemon.attack,
             defense: pokemon.defense,
             height: pokemon.height,
             weight: pokemon.weight,
-            types: pokemon.type.map(type => type.name).join(', ')
+            types: pokemon.types.map(type => type.name).join(', ')
         }
     })
 
