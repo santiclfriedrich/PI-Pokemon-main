@@ -1,26 +1,30 @@
-const { pokemon, type } = require('../db');
+const { Pokemon, Type, Image } = require('../db');
 
 const newPokemon = async(name, image, hp, attack, defense, height, weight, types) => {
 
-    const response = await pokemon.create({
+    const response = await Pokemon.create({
         name,
-        image,
         hp,
         attack,
         defense,
         height,
         weight,
         types
-
     })
 
     types.map(async (temp) => {
-        const firstType = await type.findOne({ where: {name: temp} });
-        await response.addTypes(firstType)
+        const newTypes = await Type.findOne({ where: {name: temp} });
+        await response.addTypes(newTypes)
     })
 
-    return response
+    const newImages = await Image.findOne({ where: { image: image } });
+        await response.addImage(newImages)
+
+    return response;
 
 } 
+
+
+
 
 module.exports = newPokemon

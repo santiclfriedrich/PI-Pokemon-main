@@ -1,23 +1,24 @@
 require('dotenv').config();
 const axios = require('axios');
-const { pokemon, type } = require('../db')
+const { Pokemon, Type, Image } = require('../db')
 const URL = `https://pokeapi.co/api/v2/pokemon?limit=50&offset=0`
 
 const getPokemons = async () => {
 
-    const pokemonDb = await pokemon.findAll({ include: [ { model: type } ] });
+    const pokemonDb = await Pokemon.findAll({ include: [ { model: Type }, { model: Image } ] });
 
     const newPokemon = pokemonDb.map((pokemon) => {
         return {
             id: pokemon.id,
             name: pokemon.name,
             // image: pokemon.image,
+            image: pokemon.Images.map(img => img.image),
             hp: pokemon.hp,
             attack: pokemon.attack,
             defense: pokemon.defense,
             height: pokemon.height,
             weight: pokemon.weight,
-            types: pokemon.types.map(type => type.name).join(', ')
+            types: pokemon.Types.map(type => type.name).join(', ')
         }
     })
 

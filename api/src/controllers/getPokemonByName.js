@@ -1,9 +1,9 @@
 const axios = require('axios');
-const { pokemon } = require('../db');
+const { Pokemon } = require('../db');
 
 const getPokemonByName = async (name) => {
 
-    const pokemonDb = await pokemon.findAll({ where: {name: name} });
+    const pokemonDb = await Pokemon.findAll({ where: {name: name} });
     const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
     const pokemonDataApi = response.data;
 

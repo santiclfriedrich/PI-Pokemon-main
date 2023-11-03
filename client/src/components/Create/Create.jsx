@@ -64,7 +64,7 @@ const CreateForm = () => {
 
     useEffect( () => {
         dispatch(newImages())
-    }, []);
+    }, [dispatch]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -102,7 +102,7 @@ const CreateForm = () => {
                 {errors.weight && <p>{errors.weight}</p> }
 
                 <label >imagen
-                <select onChange={handleChange}>
+                <select name="image" value={data.image} onChange={handleChange}>
                 {newImgPokes.map(Image => <option name={Image.name} key={Image.key} value={Image.name}>{Image.name}</option>)}
                 </select>
                 </label>

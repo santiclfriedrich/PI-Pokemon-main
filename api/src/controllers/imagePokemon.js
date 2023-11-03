@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { image } = require('../db');
+const { Image } = require('../db');
 
 const getImage = async () => {
     const apiInfo = await axios.get(`https://pokeapi.co/api/v2/pokemon/`);
@@ -7,18 +7,22 @@ const getImage = async () => {
 
     for (const dataImg of result){
 
-        const url = dataImg.url
+        const pokeInfo = await axios.get(dataImg.url)
 
-        const response = await image.findAll({where: {url: url} });
+        const imageUrl = pokeInfo.data.sprites.front_default
 
-        if (!response) {
-            await image.create({ url: url })
-        }
+        const response = await Image.findAll({ where: { image: imageUrl } 
+        
+        });
+        
+    if(response.length === 0){
+        await Image.create({ image: imageUrl })
+    }
 
     }
 
 
-    return await image.findAll();
+    return await Image.findAll();
 
 }
 

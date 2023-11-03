@@ -46,19 +46,19 @@ PokemonImage(sequelize)
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { pokemon, type, image } = sequelize.models;
+const { Pokemon, Type, Image } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-pokemon.belongsToMany(type, {through: "pokemon_type"});
-type.belongsToMany(pokemon, {through: "pokemon_type"});
+Pokemon.belongsToMany(Type, {through: "pokemon_type"});
+Type.belongsToMany(Pokemon, {through: "pokemon_type"});
 
-pokemon.belongsToMany(image, {through: "pokemon_image"});
-image.belongsToMany(pokemon, {through: "pokemon_image"});
+Pokemon.belongsToMany(Image, {through: "pokemon_image"});
+Image.belongsToMany(Pokemon, {through: "pokemon_image"});
 
 module.exports = {
-   pokemon,
-   type,
-   image, // para poder importar los modelos así: const { Product, User } = require('./db.js');
+   Pokemon,
+   Type,
+   Image, // para poder importar los modelos así: const { Product, User } = require('./db.js');
    conn: sequelize, // para importart la conexión { conn } = require('./db.js');
 };

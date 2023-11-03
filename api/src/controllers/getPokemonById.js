@@ -1,11 +1,11 @@
 const axios = require('axios');
-const {pokemon, type} = require('../db');
+const {Pokemon, Type} = require('../db');
 
 const getPokemonById = async (id) => {
 
     //consulta a la DB
     if(id.toString().length > 5){
-        const pokemonDataDb = [await pokemon.findAll(id, { include: { model: type } })];
+        const pokemonDataDb = [await Pokemon.findAll(id, { include: { model: Type } })];
         const newPokemon = pokemonDataDb.map(pokemon => {
             return {
                 id: pokemon.id,
