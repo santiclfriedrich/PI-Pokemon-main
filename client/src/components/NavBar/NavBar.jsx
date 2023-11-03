@@ -14,6 +14,10 @@ const NavBar = () => {
         navigate('/form')
     }
 
+    const onClickHandlerBatalla = () => {
+        navigate('/combate')
+    }
+
     return(
         <div>
 
@@ -28,6 +32,10 @@ const NavBar = () => {
             {
                 location.pathname === '/home'
                 && <button onClick={onClickHandler}>Create</button>
+            }
+            {
+                location.pathname === '/home' 
+                && <button onClick={onClickHandlerBatalla}>Combate</button>
             }
 
         </div>

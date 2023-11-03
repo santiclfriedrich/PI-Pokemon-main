@@ -103,8 +103,20 @@ const CreateForm = () => {
 
                 <label >imagen
                 <select name="image" value={data.image} onChange={handleChange}>
-                {newImgPokes.map(Image => <option name={Image.name} key={Image.key} value={Image.name}>{Image.name}</option>)}
+
+                {newImgPokes.map((image) => <option key={image.id} value={image.image}>{image.name}</option>)}
+
                 </select>
+                {
+                    data.image && (
+                            <img 
+                            
+                            src={data.image} //utiliza la url de la DB
+                            alt='Imagen seleccionada'
+                            width='100'
+                            height='100'
+                            />
+                    )}
                 </label>
 
                 <label>Tipos:
