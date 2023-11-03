@@ -73,7 +73,7 @@ const reducer = (state = initialState, action) => {
         case FILTER_TYPES:
             const copyType = [...state.newPokemons]
             const response = [...copyType.filter((poke) => {
-                return poke.types && poke.types.map(element =>
+                return poke.types && poke.types.split(',').map(element =>
                     element.trim()).includes(action.payload)
                 })]
             return{

@@ -37,7 +37,7 @@ const getPokemons = async () => {
             defense: pokeInfoApi.stats[2]["base_stat"],
             height: pokeInfoApi.height,
             weight: pokeInfoApi.weight,
-            types: pokeInfoApi.types.map(type => type.type.name).join(', ')
+            types: pokeInfoApi.Types.map(type => type.type.name).join(', ')
         }
         return poke1
 
