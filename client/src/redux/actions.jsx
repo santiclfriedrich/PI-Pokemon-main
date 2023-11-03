@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_POKEMON, GET_BY_NAME, GET_BY_ID, ORDER_ATTACK, ORDER_NAME_A_TO_Z, CREATE_NEW_POKEMON, TYPES, IMAGE } from './actions-types'
+import { GET_POKEMON, GET_BY_NAME, GET_BY_ID, ORDER_ATTACK, ORDER_NAME_A_TO_Z, CREATE_NEW_POKEMON, FILTER_API_DB, TYPES, IMAGE } from './actions-types'
 
 export const getPoke = () => {
 
@@ -76,6 +76,13 @@ export const newImages = () => {
             type: IMAGE,
             payload: response.data
         })
+    }
+}
+
+export const filterApiToDb = (value) => {
+    return{
+        type: FILTER_API_DB,
+        payload: value
     }
 }
 

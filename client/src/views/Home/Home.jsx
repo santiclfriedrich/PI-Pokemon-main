@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import Cards from '../../components/Cards/Cards';
-import { getPoke, orderAz, orderAttack } from '../../redux/actions';
+import { filterApiToDb, getPoke, orderAz, orderAttack } from '../../redux/actions';
 
 //paginado
 const POKEMON_PER_PAGE = 10;
@@ -43,6 +43,11 @@ const Home = () => {
         dispatch(orderAttack(e.target.value))
     }
 
+    const handlerDbApi = (e) => {
+        const result = e.target.value
+        dispatch(filterApiToDb(result))
+    }
+
     return(
         <div>
             <h1>Home</h1>
@@ -55,6 +60,11 @@ const Home = () => {
             <select onChange={handlerOrderAttack}>
                 <option value="ataqueMin">ataque min</option>
                 <option value="ataqueMax">ataque max</option>
+            </select>
+
+            <select onChange={handlerDbApi}>
+                <option value='api'> api </option>
+                <option value='db'> db </option>
             </select>
 
             <Cards pokemons={pokeToDisplay} />

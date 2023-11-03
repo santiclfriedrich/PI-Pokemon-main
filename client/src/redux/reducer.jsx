@@ -1,4 +1,4 @@
-import { GET_POKEMON, GET_BY_NAME, GET_BY_ID, ORDER_ATTACK, ORDER_NAME_A_TO_Z, CREATE_NEW_POKEMON, TYPES, IMAGE } from "./actions-types";
+import { GET_POKEMON, GET_BY_NAME, GET_BY_ID, ORDER_ATTACK, ORDER_NAME_A_TO_Z, CREATE_NEW_POKEMON, FILTER_API_DB, TYPES, IMAGE } from "./actions-types";
 
 let initialState = {
     newPokemons: [],
@@ -49,6 +49,28 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 allImages: action.payload
             }
+
+        //filtrado
+
+        case FILTER_API_DB:
+
+            let pokemonsFiltrados;
+
+            if (action.payload = 'api'){
+                pokemonsFiltrados = state.pokemons.filter((poke) =>
+                poke.id.toString().length < 6 )
+            } if (action.payload === 'db'){
+                pokemonsFiltrados = state.pokemons.filter((poke) => 
+                poke.id.toString().length > 6 )
+            }
+
+            return{
+                ...state,
+                pokemons: [...pokemonsFiltrados]
+            }
+
+
+        //ordenamientos
 
         case ORDER_NAME_A_TO_Z:
             if(action.payload === 'A') {
