@@ -1,4 +1,4 @@
-import { GET_POKEMON, GET_BY_NAME, GET_BY_ID, ORDER_ATTACK, ORDER_NAME_A_TO_Z, CREATE_NEW_POKEMON, FILTER_API_DB, TYPES, IMAGE } from "./actions-types";
+import { GET_POKEMON, GET_BY_NAME, GET_BY_ID, ORDER_ATTACK, ORDER_NAME_A_TO_Z, CREATE_NEW_POKEMON, FILTER_API_DB, TYPES, FILTER_TYPES, IMAGE } from "./actions-types";
 
 let initialState = {
     newPokemons: [],
@@ -50,7 +50,7 @@ const reducer = (state = initialState, action) => {
                 allImages: action.payload
             }
 
-        //filtrado
+        //filtrados
 
         case FILTER_API_DB:
 
@@ -59,7 +59,7 @@ const reducer = (state = initialState, action) => {
             if (action.payload = 'api'){
                 pokemonsFiltrados = state.pokemons.filter((poke) =>
                 poke.id.toString().length < 6 )
-            } if (action.payload === 'db'){
+            } else if (action.payload === 'db'){
                 pokemonsFiltrados = state.pokemons.filter((poke) => 
                 poke.id.toString().length > 6 )
             }
@@ -69,6 +69,17 @@ const reducer = (state = initialState, action) => {
                 pokemons: [...pokemonsFiltrados]
             }
 
+
+        case FILTER_TYPES:
+            const copyType = [...state.newPokemons]
+            const response = [...copyType.filter((poke) => {
+                return poke.types && poke.types.map(element =>
+                    element.trim()).includes(action.payload)
+                })]
+            return{
+                ...state,
+                pokemons: response
+            }
 
         //ordenamientos
 

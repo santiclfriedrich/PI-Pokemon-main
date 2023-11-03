@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import validation from "./validation";
-import { createPokemon, allTypes, newImages } from "../../redux/actions";
+import { createPokemon, newImages } from "../../redux/actions";
 
 
 
@@ -60,9 +60,7 @@ const CreateForm = () => {
         setDataIsValid(validateInfo());
     }, [errors])
 
-    useEffect( () => {
-        dispatch(allTypes())
-    }, []);
+    
 
     useEffect( () => {
         dispatch(newImages())
