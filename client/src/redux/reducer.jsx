@@ -54,14 +54,16 @@ const reducer = (state = initialState, action) => {
 
         case FILTER_API_DB:
 
-            let pokemonsFiltrados;
+            let pokemonsFiltrados = []
 
             if (action.payload = 'api'){
-                pokemonsFiltrados = state.pokemons.filter((poke) =>
+                pokemonsFiltrados = state.newPokemons.filter((poke) =>
                 poke.id.toString().length < 6 )
             } else if (action.payload === 'db'){
-                pokemonsFiltrados = state.pokemons.filter((poke) => 
+                pokemonsFiltrados = state.newPokemons.filter((poke) => 
                 poke.id.toString().length > 6 )
+            } else if (action.payload === 'todos') {
+                pokemonsFiltrados = state.newPokemons
             }
 
             return{

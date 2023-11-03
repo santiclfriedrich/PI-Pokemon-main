@@ -57,7 +57,7 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(allTypes())
-    }, [])
+    }, [dispatch])
 
     return(
         <div>
@@ -74,8 +74,9 @@ const Home = () => {
             </select>
 
             <select onChange={handlerDbApi}>
-                <option value='api'> api </option>
-                <option value='db'> db </option>
+                <option value='todos'> API/DB </option>
+                <option value='api'> API </option>
+                <option value='db'> DB </option>
             </select>
 
             <select
