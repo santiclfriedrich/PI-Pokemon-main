@@ -1,15 +1,25 @@
 
 
-const Batalla = () => {
+export const calcularDanio = (pokemonAtacante, pokemonDefensor) => {
 
-    const calcularDanio = (pokemonAtacante, pokemonDefensor) => {
-        // logica de calculo de danio
-    } 
+    const danoBase = 10;
 
-    const determinarGanador = (pokemon1, pokemon2) => {
-        //logica para determinar el ganador
-    }
+    const dano = (pokemonAtacante.attack - pokemonDefensor.defense ) +
+    danoBase
+
+    return Math.max(0, dano);
 
 }
 
-export default Batalla
+export const determinarGanador = (pokemon1, pokemon2) => {
+
+    const danio1 = calcularDanio(pokemon1, pokemon2);
+    const danio2 = calcularDanio(pokemon2, pokemon1);
+
+    if(danio1 > danio2){
+        return pokemon1;
+    } else if (danio2 > danio1){
+        return pokemon2;
+    }
+
+}
