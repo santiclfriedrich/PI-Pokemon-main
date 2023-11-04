@@ -9,6 +9,9 @@ import './App.css'
 
 
 function App() {
+
+  const location = useLocation();
+
   return (
     <div className='App' >
        {location.pathname !== '/' && <NavBar/> } 
@@ -17,7 +20,7 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/detail/:id' element={ <Detail /> } />
         <Route path='/form' element={ <Form /> } />
-        <Route path='combate' Component={Combate} />
+        <Route path='/combate' Component={Combate} />
       </Routes>
     </div>
   )

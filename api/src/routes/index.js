@@ -13,7 +13,7 @@ const imageHandler = require('../handlers/imgPokemon')
 // Ejemplo: router.use('/auth', authRouter);
 const mainRouter = Router();
 
-mainRouter.get('/pokemons/name', getPokemonByNameHandler)
+mainRouter.get('/name', getPokemonByNameHandler)
 mainRouter.get('/pokemons/:idPokemon', getPokemonbyIdHandler);
 mainRouter.get('/pokemons', PokemonsHandler);
 mainRouter.post('/pokemons', postPokemon);

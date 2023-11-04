@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from 'react-redux'
 import Cards from '../../components/Cards/Cards';
 import { filterApiToDb, getPoke, orderAz, orderAttack, allTypes, filterTypes } from '../../redux/actions';
 import { useNavigate } from "react-router-dom";
-import { calcularDanio, determinarGanador } from "../../components/Batalla/Batalla";
 
 //paginado
 const POKEMON_PER_PAGE = 10;
@@ -57,10 +56,6 @@ const Home = () => {
       //inicio de batalla
       const startBattle = () => {
         if (selectedPokemon1 && selectedPokemon2) {
-            // Calculo el daño y determino el ganador
-            const danio1 = calcularDanio(selectedPokemon1, selectedPokemon2);
-            const danio2 = calcularDanio(selectedPokemon2, selectedPokemon1);
-            const ganador = determinarGanador(danio1, danio2); 
           navigate(`/combate?pokemon1=${selectedPokemon1.id}&pokemon2=${selectedPokemon2.id}`);
         } else {
           alert('Selecciona dos Pokémon para iniciar la batalla.');
@@ -98,6 +93,7 @@ const Home = () => {
             <h1>Home</h1>
 
             <select onChange={orderHandler} >
+                <option value="todos">Todos</option>
                 <option value="A">A - Z</option>
                 <option value="Z">Z - A</option>
             </select>
@@ -120,7 +116,7 @@ const Home = () => {
 
             <button onClick={startBattle}>Iniciar Batalla</button>
 
-            <Cards pokemons={pokeToDisplay} handlePokeSelect={handlePokemonSelect} />
+            <Cards pokemons={pokeToDisplay} handlePokemonSelect={handlePokemonSelect} />
 
             <div>
                 <button onClick={prevHandler} disabled={currentPage === 0} >Prev</button>

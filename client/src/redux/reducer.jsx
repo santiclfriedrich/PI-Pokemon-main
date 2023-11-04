@@ -18,11 +18,32 @@ const reducer = (state = initialState, action) => {
             pokemons: action.payload,
             }
 
+            case GET_BY_NAME:
+                if (action.payload.hasOwnProperty('name')){
+                    return{
+                        ...state,
+                        newPokemons: [action.payload],
+                        pokemons: [action.payload]
+                    }
+                } else {
+                    return {
+                        ...state,
+                        newPokemons: [...action.payload],
+                        pokemons: [...action.payload]
+                    }
+                }
+
         case CREATE_NEW_POKEMON:
             return{
                 ...state,
                 newPokemons: [...state.newPokemons, action.payload],
                 pokemons: [...state.pokemons, action.payload]
+            }
+
+        case GET_BY_ID:
+            return{
+                    ...state,
+                    detailsPokemon: action.payload
             }
 
         case TYPES:
@@ -31,18 +52,6 @@ const reducer = (state = initialState, action) => {
                 newTypes: action.payload
             }
 
-        case GET_BY_NAME:
-            return{
-                ...state,
-                newPokemons: action.payload,
-                pokemons: action.payload,
-            }
-
-        case GET_BY_ID:
-            return{
-                ...state,
-                detailsPokemon: action.payload
-            }
 
         case IMAGE:
             return{
@@ -68,7 +77,7 @@ const reducer = (state = initialState, action) => {
 
             return{
                 ...state,
-                pokemons: [...pokemonsFiltrados]
+                pokemons: [...pokemonsFiltrados],
             }
 
 
@@ -86,20 +95,26 @@ const reducer = (state = initialState, action) => {
         //ordenamientos
 
         case ORDER_NAME_A_TO_Z:
+            if (action.payload === 'todos' ){
+                const allCopy = state.newPokemons;
+                return{
+                    ...state,
+                    pokemons: [...allCopy]
+                }
+            }
             if(action.payload === 'A') {
                 const allPokesCopy = [...state.pokemons]
                 const result = allPokesCopy.sort( (a, b) => a.name.localeCompare(b.name) );
                 return{
                     ...state,
-                    pokemons: [...result]
+                    pokemons: result,
                 }
             }
             if(action.payload === 'Z' ) {
-                const allPokesCopy = [...state.pokemons];
-                const result = allPokesCopy.sort( (a, b) => b.name.localeCompare(a.name) )
+                const result = [...state.pokemons].sort( (a, b) => b.name.localeCompare(a.name) )
                 return{
                     ...state,
-                    pokemons: [...result]
+                    pokemons: result
                 }
             }
 

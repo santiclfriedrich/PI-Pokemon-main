@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import style from './Card.module.css';
 
-const Card = ({ id, name, image, types, handlePokeSelect }) => {
+const Card = ({ id, name, image, types, handlePokemonSelect }) => {
 
     return(
         <div className={style.card} >
@@ -12,7 +12,7 @@ const Card = ({ id, name, image, types, handlePokeSelect }) => {
             <p>Tipos : {types}</p>
             </Link>
 
-            <button onClick={ () => handlePokeSelect({id, name, image, types}) }> Seleccionar </button>
+            <button onClick={ () => handlePokemonSelect({id, name, image, types}) }> Seleccionar </button>
         </div>
     )
 

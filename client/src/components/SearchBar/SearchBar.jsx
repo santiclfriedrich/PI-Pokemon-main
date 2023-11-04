@@ -8,7 +8,7 @@ const SearchBar = () => {
     const dispatch = useDispatch();
 
     const onClickHandler = async () => {
-        await dispatch(getPokeName(name));
+         dispatch(getPokeName(name));
         setName('');
     }
 

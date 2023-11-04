@@ -14,14 +14,17 @@ const Detail = () => {
 
     return(
         <div>
+            <div>
             <h2>Nombre: {pokeDetails?.name}</h2>
-            <img src={pokeDetails?.image} />
-            <h2>Vida: {pokeDetails?.hp}</h2>
-            <h2>Ataque: {pokeDetails?.attack}</h2>
-            <h2>Defense: {pokeDetails?.defense}</h2>
-            <h2>Altura: {pokeDetails?.height}</h2>
-            <h2>Peso: {pokeDetails?.weight}</h2>
-            <h2>Tipo: {pokeDetails?.types}</h2>
+                <img src={pokeDetails?.image} />
+                <h2>Vida: {pokeDetails?.hp}</h2>
+                <h2>Ataque: {pokeDetails?.attack}</h2>
+                <h2>Defense: {pokeDetails?.defense}</h2>
+                <h2>Altura: {pokeDetails?.height}</h2>
+                <h2>Peso: {pokeDetails?.weight}</h2>
+                <h2>Tipo: {pokeDetails?.types && pokeDetails?.types.join(', ') }</h2>
+            </div>
+           
         </div>
     )
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '../Card/Card';
 import style from './Cards.module.css';
 
-const Cards = ({ pokemons, handlePokeSelect  }) => {
+const Cards = ({ pokemons, handlePokemonSelect  }) => {
 
     return(
         <div className={style.cards}>
@@ -20,7 +20,7 @@ const Cards = ({ pokemons, handlePokeSelect  }) => {
                     height={height}
                     weight={weight}
                     types={types}
-                    handlePokeSelect={handlePokeSelect}
+                    handlePokemonSelect={handlePokemonSelect}
                     />
                 )
             })
