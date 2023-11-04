@@ -15,7 +15,7 @@ const validation = (data) => {
     }
 
     if (!/^\d{1,4}$/.test(data.height)) {
-        errors.hight = 'La altura debe ser un número de hasta 4 dígitos';
+        errors.height = 'La altura debe ser un número de hasta 4 dígitos';
     }
 
     if (!/^\d{1,4}$/.test(data.weight)) {
