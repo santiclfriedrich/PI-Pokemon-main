@@ -38,9 +38,9 @@ const Combate = () => {
         <img src={pokemon2?.image} />
 
         <p> Ganador: {ganadorPokemon?.name} </p>
-        {ganadorPokemon && (
+        
             <img src={ganadorPokemon?.image} />
-        )}
+        
 
     </div>
   );

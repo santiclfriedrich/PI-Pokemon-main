@@ -104,7 +104,7 @@ const CreateForm = () => {
                 <label >imagen
                 <select name="image" value={data.image} onChange={handleChange}>
 
-                {newImgPokes.map((image) => <option key={image.id} value={image.image}>{image.name}</option>)}
+                {newImgPokes.map((image) => <option key={image.id} value={image.image}>{image.image}</option>)}
 
                 </select>
                 {
