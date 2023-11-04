@@ -12,7 +12,7 @@ const Card = ({ id, name, image, types, handlePokeSelect }) => {
             <p>Tipos : {types}</p>
             </Link>
 
-            <button onClick={ () => handlePokeSelect }> Seleccionar </button>
+            <button onClick={ () => handlePokeSelect({id, name, image, types}) }> Seleccionar </button>
         </div>
     )
 

@@ -1,4 +1,4 @@
-const { getPokemons } = require('../controllers/getPokemons');
+const  getPokemons = require('../controllers/getPokemons');
 
 const PokemonsHandler = async (req, res) => {
 
@@ -11,6 +11,5 @@ const PokemonsHandler = async (req, res) => {
 
 }
 
-module.exports = {
+module.exports = 
     PokemonsHandler
-};

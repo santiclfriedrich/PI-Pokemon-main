@@ -1,48 +1,41 @@
-const axios = require('axios');
-const {Pokemon, Type, Image} = require('../db');
+const axios = require('axios')
+const { Pokemon, Type, Image } = require('../db');
 
-const getPokemonById = async (id) => {
-
-    //consulta a la DB
-    if(id.toString().length > 5){
-        const pokemonDataDb = [await Pokemon.findByPk(id, { include: [{ model: Type }, { model: Image }] })];
-        const newPokemon = pokemonDataDb.map(pokemon => {
-            return {
-                id: pokemon.id,
-                name: pokemon.name,
-                image: pokemon.Images.map(img => img.name)  ,
-                hp: pokemon.hp,
-                attack: pokemon.attack,
-                defense: pokemon.defense,
-                height: pokemon.height,
-                weight: pokemon.weight,
-                types: pokemon.types.map(type => type.name)
-            }
-        })
-        return newPokemon[0]
-    }
-
-    //consulta a la API
-    const response = await axios(`https://pokeapi.co/api/v2/pokemon/${id}`);
-        const pokemonData = response.data
-        const pokemonTypesAPI = pokemonData.types.map(type => type.type.name)
-
-        const pokemonAPI = {
-            id,
-            name: pokemonData.name,
-            image: pokemonData.sprites.front_default,
-            hp: pokemonData.stats[0]["base_stat"],
-            attack: pokemonData.stats[1]["base_stat"],
-            defense: pokemonData.stats[2]["base_stat"],
-            speed: pokemonData.stats[5]["base_stat"],
-            height: pokemonData.height,
-            weight: pokemonData.weight,
-            tipo: pokemonTypesAPI
-        }
-        return pokemonAPI
+const getPokemonById = async (idPokemon) => {
+  //hacer un if con la info de la db
+  if (idPokemon.toString().length > 5) {
+    const pokemonDb = [await Pokemon.findByPk(idPokemon, { include: [ { model: Type },{ model: Image }] })]
+    const newPokemon = pokemonDb.map((pokemon) => {
+      return {
+        id: pokemon.id,
+        name: pokemon.name,
+        image: pokemon.Images.map(img => img.image),
+        hp: pokemon.hp,
+        attack: pokemon.attack,
+        defense: pokemon.defense,
+        height: pokemon.height,
+        weight: pokemon.weight,
+        types: pokemon.Types.map(type => type.name)
+      }
+    })
+    return newPokemon[0];
+  }
+  
+  const getInfo = await axios.get(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`)
+  const apiInfo = getInfo.data;
+  const pokemonFund = {
+    id: apiInfo.id,
+    name: apiInfo.name,
+    image: apiInfo.sprites.other.dream_world.front_default,
+    hp: apiInfo.stats[0]["base_stat"],
+    attack: apiInfo.stats[1]["base_stat"],
+    defense: apiInfo.stats[2]["base_stat"],
+    height: apiInfo.height,
+    weight: apiInfo.weight,
+    types: apiInfo.types.map(type => type.type.name)
+}
+  return pokemonFund
 
 }
 
-module.exports = { 
-    getPokemonById
-}
+module.exports = getPokemonById;

@@ -2,23 +2,21 @@ const axios = require('axios');
 const { Type } = require('../db');
 
 const getType = async () => {
-
     const typeApi = await axios.get(`https://pokeapi.co/api/v2/type`);
-    const typeNames = typeApi.data.results.map(typeData => typeData.name);
+    const result = typeApi.data;
 
-    const existingTypes = await Type.findAll({ where: { name: typeNames } });
+    for (const typeData of result.results) {//itero sobre cada elemento en el arreglo result.results
+        
+        const typeName = typeData.name;//se utiliza para acceder al nombre de cada tipo dentro del bucle.
 
-    const newTypeNames = typeNames.filter(typeName => !existingTypes.some(type => type.name === typeName));
+        const existingType = await Type.findAll({ where: { name: typeName } });
 
-    if (newTypeNames.length > 0) {
-
-        const newTypes = newTypeNames.map(typeName => ({ name: typeName }));
-        await Type.bulkCreate(newTypes)
-
+        if (existingType.length === 0) {
+            // Si no existe, crea un nuevo registro en la base de datos
+            await Type.create({ name: typeName });
+        }
     }
 
-    return Type.findAll();
-
+    return await Type.findAll();
 }
-
 module.exports = getType;

@@ -1,4 +1,4 @@
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, useLocation} from 'react-router-dom';
 import Landing from './views/landing/LandingPage';
 import Home from './views/home/Home';
 import Detail from './views/detail/Detail';
@@ -11,7 +11,7 @@ import './App.css'
 function App() {
   return (
     <div className='App' >
-      <NavBar/>
+       {location.pathname !== '/' && <NavBar/> } 
       <Routes>
         <Route path='/' element={ <Landing /> } />
         <Route path='/home' element={<Home />} />

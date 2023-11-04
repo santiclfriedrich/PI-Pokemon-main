@@ -2,10 +2,8 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+const { type } = require('os');
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
-const PokemonModel = require('./models/Pokemon')
-const PokemonType = require('./models/PokemonType')
-const PokemonImage = require('./models/PokemonImage')
 
 const sequelize = new Sequelize(
    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pokemon`,
@@ -40,25 +38,18 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-PokemonModel(sequelize);
-PokemonType(sequelize);
-PokemonImage(sequelize)
-
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 const { Pokemon, Type, Image } = sequelize.models;
 
 // Aca vendrian las relaciones
+Pokemon.belongsToMany(Type, { through: "Pokemon_Type"});
+Type.belongsToMany(Pokemon, { through: "Pokemon_Type"});
+Pokemon.belongsToMany(Image, { through: "Pokemon_Image"});
+Image.belongsToMany(Pokemon, { through: "Pokemon_Image"});
 // Product.hasMany(Reviews);
-Pokemon.belongsToMany(Type, {through: "pokemon_type"});
-Type.belongsToMany(Pokemon, {through: "pokemon_type"});
-
-Pokemon.belongsToMany(Image, {through: "pokemon_image"});
-Image.belongsToMany(Pokemon, {through: "pokemon_image"});
 
 module.exports = {
-   Pokemon,
-   Type,
-   Image, // para poder importar los modelos así: const { Product, User } = require('./db.js');
+   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
    conn: sequelize, // para importart la conexión { conn } = require('./db.js');
 };

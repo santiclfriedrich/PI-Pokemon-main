@@ -18,6 +18,12 @@ const Home = () => {
     const totalPage = Math.ceil(totalPokemons / POKEMON_PER_PAGE)
     const [currentPage, setCurrentPage] = useState(0)
 
+    //combate
+
+    const [selectedPokemon1, setSelectedPokemon1] = useState(null);
+    const [selectedPokemon2, setSelectedPokemon2] = useState(null);
+    const navigate = useNavigate();
+
     useEffect(() => {
         dispatch(getPoke());
     }, [dispatch]);
@@ -38,11 +44,6 @@ const Home = () => {
         }
     }
 
-    //combate
-
-    const [selectedPokemon1, setSelectedPokemon1] = useState(null);
-    const [selectedPokemon2, setSelectedPokemon2] = useState(null);
-    const navigate = useNavigate();
 
     //seleccion de pokemones para combate
     const handlePokemonSelect = (pokemon) => {
@@ -117,7 +118,9 @@ const Home = () => {
                 {allTYPE.map(types => <option name={types.name} key={types.key} value={types.name}>{types.name}</option>)}
             </select>
 
-            <Cards pokemons={pokeToDisplay} />
+            <button onClick={startBattle}>Iniciar Batalla</button>
+
+            <Cards pokemons={pokeToDisplay} handlePokeSelect={handlePokemonSelect} />
 
             <div>
                 <button onClick={prevHandler} disabled={currentPage === 0} >Prev</button>
@@ -125,23 +128,6 @@ const Home = () => {
                 <button onClick={nextHandler} disabled={currentPage === totalPage - 1 }>Next</button>
             </div>
 
-            <div>
-                {pokeToDisplay.map((pokemon) => (
-
-                    <div key={pokemon.id} >
-
-                        <h3>{pokemon.name}</h3>
-                        <button onClick={() => 
-                        
-                        handlePokemonSelect(pokemon)
-                    
-                    }>Seleccionar</button>
-
-                    </div>
-
-                ))}
-                <button onClick={startBattle}>Iniciar Batalla</button>
-            </div>
 
         </div>
     )
