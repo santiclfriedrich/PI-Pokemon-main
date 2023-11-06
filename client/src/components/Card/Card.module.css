@@ -1,0 +1,40 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 25px;
+    cursor: pointer;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;
+    text-align: center;
+}
+
+.card:hover{
+    transform: scale(1.02);
+}
+
+.cardLink{
+    text-decoration: none;
+}
+
+.card h2{
+    color: black;
+}
+
+.card img{
+    width: 200px;
+    height: 200px;
+}
+
+.cardType{
+    color: black;
+}
+
+.cardButton{
+    width: 50%;
+    margin: 0 auto;
+    color: rgb(41, 97, 89);
+}

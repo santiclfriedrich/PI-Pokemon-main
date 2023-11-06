@@ -2,10 +2,10 @@ import React from 'react';
 import Card from '../Card/Card';
 import style from './Cards.module.css';
 
-const Cards = ({ pokemons, handlePokemonSelect  }) => {
+const Cards = ({ pokemons  }) => {
 
     return(
-        <div className={style.cards}>
+        <div className={style.cardlist}>
             { pokemons.map(({ id, name, image, hp, attack, defense, height, weight, types }) => {
 
                 return(
@@ -20,7 +20,6 @@ const Cards = ({ pokemons, handlePokemonSelect  }) => {
                     height={height}
                     weight={weight}
                     types={types}
-                    handlePokemonSelect={handlePokemonSelect}
                     />
                 )
             })

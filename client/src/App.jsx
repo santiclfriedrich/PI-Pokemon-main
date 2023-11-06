@@ -1,10 +1,9 @@
 import {Routes, Route, useLocation} from 'react-router-dom';
 import Landing from './views/landing/LandingPage';
-import Home from './views/home/Home';
+import Home from './views/Home/Home';
 import Detail from './views/detail/Detail';
 import Form from './views/Form/Form';
 import NavBar from './components/NavBar/NavBar';
-import Combate from './views/Combate/Combate';
 import './App.css'
 
 
@@ -20,7 +19,6 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/detail/:id' element={ <Detail /> } />
         <Route path='/form' element={ <Form /> } />
-        <Route path='/combate' Component={Combate} />
       </Routes>
     </div>
   )

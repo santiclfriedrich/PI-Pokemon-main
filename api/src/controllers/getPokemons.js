@@ -1,7 +1,7 @@
 require('dotenv').config();
 const axios = require('axios');
 const { Pokemon, Type, Image } = require('../db')
-const URL = `https://pokeapi.co/api/v2/pokemon?limit=50&offset=0`
+const URL = `https://pokeapi.co/api/v2/pokemon?limit=60&offset=0`
 
 const getPokemons = async () => {
 

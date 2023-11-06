@@ -3,9 +3,10 @@ import {useDispatch, useSelector} from 'react-redux'
 import Cards from '../../components/Cards/Cards';
 import { filterApiToDb, getPoke, orderAz, orderAttack, allTypes, filterTypes } from '../../redux/actions';
 import { useNavigate } from "react-router-dom";
+import style from './Home.module.css'
 
 //paginado
-const POKEMON_PER_PAGE = 10;
+const POKEMON_PER_PAGE = 12;
 
 const Home = () => {
     const allTYPE = useSelector((state) => state?.newTypes )
@@ -89,7 +90,7 @@ const Home = () => {
     }, [dispatch])
 
     return(
-        <div>
+        <div className={style.home}>
             <h1>Home</h1>
 
             <select onChange={orderHandler} >

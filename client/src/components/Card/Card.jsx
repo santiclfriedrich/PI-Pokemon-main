@@ -2,17 +2,17 @@ import { Link } from 'react-router-dom';
 
 import style from './Card.module.css';
 
-const Card = ({ id, name, image, types, handlePokemonSelect }) => {
+const Card = ({ id, name, image, types }) => {
 
     return(
         <div className={style.card} >
-            <Link to={`/detail/${id}`} >
-                <h2>{name}</h2>
+            <Link to={`/detail/${id}`} className={style.cardLink} >
+                <h2 className={style.cardTitle}>{name}</h2>
                 <img className={style.img} src={image}/>
-            <p>Tipos : {types}</p>
+            <p className={style.cardType} >Tipos : {types}</p>
             </Link>
 
-            <button onClick={ () => handlePokemonSelect({id, name, image, types}) }> Seleccionar </button>
+            
         </div>
     )
 
