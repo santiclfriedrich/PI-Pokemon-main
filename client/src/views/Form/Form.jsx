@@ -3,7 +3,7 @@ import CreateForm from "../../components/Create/Create"
 const Form = () => {
     return(
         <div>
-            <h1>Form</h1>
+            <h1 style={{textAlign: "center"}} >Create Pokemon</h1>
             <CreateForm />
         </div>
     )

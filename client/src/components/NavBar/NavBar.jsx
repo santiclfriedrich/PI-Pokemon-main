@@ -21,7 +21,7 @@ const NavBar = () => {
         <div>
 
             {location.pathname !== '/home' && location.pathname !== '/' 
-                && <button onClick={navigateHandler}>Home</button>
+                && <button className={style.buttonHome} onClick={navigateHandler}>Home</button>
             }
 
             {location.pathname === '/home'
