@@ -1,0 +1,29 @@
+.searchContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchInput{
+    padding: 5x;
+    margin-right: 10px;
+}
+
+.searchButton{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 10px;
+    margin: 5px 5px;
+    background-color: rgb(34, 34, 36);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.resetButton{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 10px;
+    background-color: rgb(34, 34, 36);
+    color: white;
+    border: none;
+    cursor: pointer;
+}

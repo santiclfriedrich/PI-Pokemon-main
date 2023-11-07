@@ -1,0 +1,14 @@
+.navCreate{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+}

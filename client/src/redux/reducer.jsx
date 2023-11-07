@@ -65,7 +65,7 @@ const reducer = (state = initialState, action) => {
 
             let pokemonsFiltrados = []
 
-            if (action.payload = 'api'){
+            if (action.payload === 'api'){
                 pokemonsFiltrados = state.newPokemons.filter((poke) =>
                 poke.id.toString().length < 6 )
             } else if (action.payload === 'db'){

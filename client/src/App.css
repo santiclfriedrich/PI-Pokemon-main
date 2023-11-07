@@ -1,0 +1,8 @@
+.App{
+  background-image: url('./assets/selva-fondo-bosque-naturaleza-escena-futurista-generativo-ai_191095-515.avif');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

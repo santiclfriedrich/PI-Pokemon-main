@@ -48,10 +48,11 @@ export const createPokemon = (data) =>{
         try {
 
             const response = await axios.post(`http://localhost:3001/pokemons`, data)
+            alert('ya se creó')
             dispatch({
                 type: CREATE_NEW_POKEMON,
                 payload: response.data,
-            })
+            });
             
         } catch (error) {
             alert(error.response.data.error)

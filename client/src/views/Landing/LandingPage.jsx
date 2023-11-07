@@ -1,5 +1,6 @@
 import {useNavigate} from 'react-router-dom';
 import style from './LandingPage.module.css';
+import landingImage from '../../assets/pokemon.png'
 
 const Landing = () =>{
 
@@ -10,8 +11,9 @@ const Landing = () =>{
 
     return(
         <div className={style.landing} >
-            <h1>Pokedex</h1>
-            <button onClick={navigateHandler} >Home</button>
+            <img className={style.landingImg} src={landingImage} alt="" />
+            <h1>Bienvenidos a la pokeApp!</h1>
+            <button className={style.buttonLand} onClick={navigateHandler} >Home</button>
         </div>
     )
 

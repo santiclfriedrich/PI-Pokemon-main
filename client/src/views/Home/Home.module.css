@@ -3,3 +3,44 @@ body{
     padding: 0;
 }
 
+.homeContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selectFilter{
+  margin-right: 10px;
+  background-color: rgb(34, 34, 36);
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 5px 20px;
+  margin-top: 5px;
+}
+
+.pagesContain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prevBut{
+    margin-right: 10px;
+  background-color: rgb(34, 34, 36);
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 5px 20px;
+  margin-top: 5px;
+}
+
+.nextBut{
+    margin-left: 10px;
+  background-color: rgb(34, 34, 36);
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 5px 20px;
+  margin-top: 5px;
+}

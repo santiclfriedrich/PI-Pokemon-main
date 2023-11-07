@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import SearchBar from '../SearchBar/SearchBar';
+import style from './NavBar.module.css';
 
 const NavBar = () => {
 
@@ -29,7 +30,7 @@ const NavBar = () => {
 
             {
                 location.pathname === '/home'
-                && <button onClick={onClickHandler}>Create</button>
+                && <button className={style.navCreate} onClick={onClickHandler}>Create Pokemon</button>
             }
             
 
